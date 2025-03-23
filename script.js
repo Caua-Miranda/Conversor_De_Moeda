@@ -8,6 +8,8 @@ function convertValues(){
 
     const dolarToday = 5.2
     const euroToday = 6.2
+    const libraToday = 7.4
+    const ieneToday = 3.8
 
     if(currencySelect.value == "dolar"){
         currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
@@ -19,8 +21,22 @@ function convertValues(){
     if(currencySelect.value == "euro"){
         currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
             style:"currency",
-            currency: "EUR"
+            currency:"EUR"
         }).format(inputCurrencyValue / euroToday)
+    }
+
+    if(currencySelect.value == "libra"){
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-GB", {
+            style:"currency",
+            currency:"GBP"
+        }).format(inputCurrencyValue / libraToday)
+    }
+
+    if(currencySelect.value == "iene"){
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("ja-JA", {
+            style:"currency",
+            currency:"JPY"
+        }).format(inputCurrencyValue / ieneToday)
     }
 
     currencyValueToConvert.innerHTML= new Intl.NumberFormat("pt-BR", {
@@ -32,7 +48,7 @@ function convertValues(){
 
 function changeName(){
     const currencyName = document.getElementById("currency-name")
-    const currencyImage = document.querySelector(".currency-image")
+    const currencyImage = document.getElementById("currency-image-converted")
     
     if(currencySelect.value == "dolar"){
         currencyName.innerHTML = "Dólar Americano"
@@ -41,7 +57,17 @@ function changeName(){
 
     if(currencySelect.value == "euro"){
         currencyName.innerHTML = "Euro"
-        currencyImage.src="./assets/EURO.png"
+        currencyImage.src = "./assets/EURO.png"
+    }
+
+    if(currencySelect.value == "libra"){
+        currencyName.innerHTML = "Libra"
+        currencyImage.src = "./assets/LIBRA.webp"
+    }
+
+    if(currencySelect.value == "iene"){
+        currencyName.innerHTML = "Iene"
+        currencyImage.src = "./assets/IENE.png"
     }
 
     convertValues()
@@ -50,4 +76,3 @@ function changeName(){
 
 convertButton.addEventListener("click", convertValues)
 currencySelect.addEventListener("change", changeName)
-
